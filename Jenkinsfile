@@ -1,13 +1,16 @@
 pipeline {
-  agent none
+  agent {
+    docker {
+      image 'maven:3-alpine'
+    }
+
+  }
   stages {
     stage('Build') {
       steps {
-      	sh 'mvn compile'
+        sh 'mvn compile'
       }
-
     }
-
     stage('Test') {
       steps {
         echo 'hello'
